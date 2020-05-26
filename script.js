@@ -105,6 +105,7 @@ var questions = [
 // Set up routine for ending the game
 function endGame(){
     document.getElementById("question").style = "display: none;";
+    document.getElementById("timer").style = "display: none;";
     document.getElementById("highscore").style = "display: block;";
     document.getElementById("score-notification").textContent = `You answered ${score} questions right, so your score is ${score}!`;
 }
@@ -128,6 +129,13 @@ var gameTimer = setInterval(function(){
 var i = 0;
 var score = 0;
 
+if(localStorage.getItem("players") != null){
+    var retrievedPlayers = localStorage.getItem("players");
+    var players = JSON.parse(retrievedPlayers);
+} else {
+    var players = [];
+}
+
 function askQuestion(){
     document.getElementById("q").textContent = questions[i].q;
     document.getElementById("a1").textContent = questions[i].a[0];
@@ -137,14 +145,14 @@ function askQuestion(){
     document.getElementById("question-counter").textContent = `Question ${i+1}`;
 }
 
+// Check if user's choice is right or wrong
 function validateChoice(number){
     var choice = number;
+    document.getElementById("feedback").style = "display: block";
     if(choice == questions[i].v){
-        document.getElementById("feedback").style = "display: block";
         document.getElementById("feedback").textContent = "Correct!";
         score++;
     } else {
-        document.getElementById("feedback").style = "display: block";
         document.getElementById("feedback").textContent = "Wrong!";
         timer = timer-5;
     }
@@ -179,6 +187,8 @@ function goToStart(){
     document.getElementById("header-placeholder").style = "display: block";
     document.getElementById("highscore").style = "display: none";
     document.getElementById("leaderboard").style = "display: none";
+    timer = 60;
+    document.getElementById("timer").textContent = `Time left: 60s`;
 }
 
 // View leaderboard
@@ -192,7 +202,28 @@ function viewLeaderboard(){
 }
 
 // Add to leaderboard
-function addToLeaderboard(){
+function addToLeaderboard(event){
+    var initials = document.getElementById("initials").value;
     viewLeaderboard();
-    
+    event.preventDefault();
+    players.push({"name": initials, "points": score});
+    localStorage.setItem("players", JSON.stringify(players));
+    // Loop through array of players and display them in each row of the table
+    for(i=0; i<players.length; i++){
+        document.getElementById("table").innerHTML +=
+        `<tr>
+            <td>${players[i].name}</td>
+            <td>${players[i].points}</td>
+        </tr>`;
+    }
+}
+
+// Clear leaderboard
+function clearLeaderboard(){
+    localStorage.removeItem("players");
+    document.getElementById("table").innerHTML =
+    `<tr>
+        <th>Player</th>
+        <th>Score</th>
+    </tr>`;
 }
