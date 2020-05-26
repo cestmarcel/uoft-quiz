@@ -1,5 +1,4 @@
 // Defining questions
-
 var questions = [
     {
         q: "What HTML element does your JavaScript go into?",
@@ -8,7 +7,7 @@ var questions = [
     },
     {
         q: "How do you start a FOR loop?",
-        a: ["for(i=0; i<3; i++", "FOR loop < 5", "for(loop i times, i = 5)", "<for i=5>"],
+        a: ["for(i=0; i<3; i++)", "FOR loop < 5", "for(loop i times, i = 5)", "<for i=5>"],
         v: 0
     },
     {
@@ -103,8 +102,14 @@ var questions = [
     }
 ]
 
-// Set up the timer
+// Set up routine for ending the game
+function endGame(){
+    document.getElementById("question").style = "display: none;";
+    document.getElementById("highscore").style = "display: block;";
+    document.getElementById("score-notification").textContent = `You answered ${score} questions right, so your score is ${score}!`;
+}
 
+// Set up the timer
 var timer = 60
 
 function startTimer(){
@@ -112,13 +117,14 @@ var gameTimer = setInterval(function(){
     timer -= 1;
     if (timer <= 0){
         clearInterval(gameTimer);
+        // Set up when endGame() gets called
+        endGame();
     }
     document.getElementById("timer").textContent = `Time left: ${timer}s`;
-}, 1000);
+    }, 1000);
 }
 
 // Set up question loop
-
 var i = 0;
 var score = 0;
 
@@ -142,10 +148,18 @@ function validateChoice(number){
         document.getElementById("feedback").textContent = "Wrong!";
         timer = timer-5;
     }
+
+    i = i + 1;
+    
+    // Set up when endGame() gets called
+    if(i == 20){
+        endGame();
+    } else {
+        askQuestion();
+    }
 }
 
 // Start the game
-
 function startGame(){
     document.getElementById("welcome-zone").style = "display: none;";
     document.getElementById("question").style = "display: block;";
@@ -157,3 +171,28 @@ function startGame(){
 
 document.getElementById("startgame").addEventListener("click", startGame);
 
+// Back to homepage (start) setup
+function goToStart(){
+    document.getElementById("welcome-zone").style = "display: block;";
+    document.getElementById("question").style = "display: none;";
+    document.getElementById("timer").style = "display: none";
+    document.getElementById("header-placeholder").style = "display: block";
+    document.getElementById("highscore").style = "display: none";
+    document.getElementById("leaderboard").style = "display: none";
+}
+
+// View leaderboard
+function viewLeaderboard(){
+    document.getElementById("welcome-zone").style = "display: none;";
+    document.getElementById("question").style = "display: none;";
+    document.getElementById("timer").style = "display: none";
+    document.getElementById("header-placeholder").style = "display: block";
+    document.getElementById("highscore").style = "display: none";
+    document.getElementById("leaderboard").style = "display: block";
+}
+
+// Add to leaderboard
+function addToLeaderboard(){
+    viewLeaderboard();
+    
+}

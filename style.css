@@ -67,6 +67,12 @@ ul {
     color: white;
 }
 
+.btn-light:focus {
+    background-color: #2C4251;
+    border-color: #2C4251;
+    color: white;
+}
+
 .btn-light:hover {
     background-color: #FF784F;
     border-color: #FF784F;
