@@ -59,11 +59,12 @@
         </p>
         <form>
             <div class="form-group">
-                <label for="exampleInputPassword1">Your Initials</label>
+                <label for="initials">Your Initials</label>
                 <input type="text" class="form-control" id="initials">
             </div>
+            <p id="error"></p>
             <div>
-                <button type="submit" id="submit-highscore" class="btn btn-secondary" onclick="addToLeaderboard(event)">Submit highscore</button>
+                <button type="button" id="submit-highscore" class="btn btn-secondary" onclick="addToLeaderboard(event)">Submit highscore</button>
                 <button type="button" id="back-to-start" onclick="goToStart()" class="btn btn-secondary leaderboard">Back to start</button>
             </div>
         </form>

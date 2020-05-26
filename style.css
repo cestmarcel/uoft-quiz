@@ -97,6 +97,10 @@ ul {
     margin: 0;
 }
 
+#error {
+    color: darkred;
+}
+
 /* Leaderboard styles */
 
 th {

@@ -204,22 +204,27 @@ function viewLeaderboard(){
 // Add to leaderboard
 function addToLeaderboard(event){
     var initials = document.getElementById("initials").value;
-    viewLeaderboard();
-    event.preventDefault();
-    players.push({"name": initials, "points": score});
-    localStorage.setItem("players", JSON.stringify(players));
-    // Loop through array of players and display them in each row of the table
-    for(i=0; i<players.length; i++){
-        document.getElementById("table").innerHTML +=
-        `<tr>
-            <td>${players[i].name}</td>
-            <td>${players[i].points}</td>
-        </tr>`;
+    event.preventDefault();    
+    if(initials != ""){
+        viewLeaderboard();
+        players.push({"name": initials, "points": score});
+        localStorage.setItem("players", JSON.stringify(players));
+        // Loop through array of players and display them in each row of the table
+        for(i=0; i<players.length; i++){
+            document.getElementById("table").innerHTML +=
+            `<tr>
+                <td>${players[i].name}</td>
+                <td>${players[i].points}</td>
+            </tr>`;
+        }
+    } else {
+        document.getElementById("error").textContent = "Please make sure to enter your initials!";
     }
 }
 
 // Clear leaderboard
 function clearLeaderboard(){
+    players = [];
     localStorage.removeItem("players");
     document.getElementById("table").innerHTML =
     `<tr>
