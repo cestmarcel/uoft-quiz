@@ -1,0 +1,111 @@
+/* Document styles */
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Header styles */
+
+.navbar {
+    background-color: #2C4251;
+}
+
+.navbar-brand.h1 {
+    color: #FF784F;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+#timer {
+    display: none;
+}
+
+/* Welcome zone styles */
+
+#welcome-zone {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.btn-secondary {
+    background-color: #FF784F;
+    border-color: #FF784F;
+    color: #2C4251;
+}
+
+.btn-secondary:hover {
+    background-color: #2C4251;
+    border-color: #2C4251;
+    color: white;
+}
+
+.start-buttons {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+/* Question styles */
+
+#question, #highscore, #leaderboard {
+    width: 70%;
+    margin: 0 auto;
+    display: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-light {
+    background-color: #2C4251;
+    border-color: #2C4251;
+    color: white;
+}
+
+.btn-light:hover {
+    background-color: #FF784F;
+    border-color: #FF784F;
+    color: #2C4251;
+}
+
+#feedback {
+    display: none;
+}
+
+.correct {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}
+
+/* Highscore styles */
+
+#submit-highscore.btn-secondary {
+    margin: 0;
+}
+
+/* Leaderboard styles */
+
+th {
+    padding-right: 10px;
+}
+
+.leaderboard.btn-secondary {
+    margin: 0;
+    display: inline-block;
+}
+
+/* Media queries */
+
+@media only screen and (max-width: 650px){
+    #welcome-zone, #question, #highscore {
+        width: 100%;
+    }
+}

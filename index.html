@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Code Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header -->
+<nav class="navbar">
+    <span class="navbar-brand mb-0 h1">Marcel Thiemann</span>
+    <span id="header-placeholder" class="navbar-brand">Javascript Coding Quiz</span>
+    <span id="timer" class="navbar-brand">Time left: 60s</span>
+  </nav>
+
+<div class="container pt-5">
+    <!-- Welcome zone -->
+    <div id="welcome-zone">
+        <h1 class="mt-2 mb-3">Welcome to my Javascript Coding Quiz!</h1>
+        <p>
+            Test your knowledge about Javascript. Try to answer as many questions as possible within 60 seconds. Each right answer will score you a point, while each wrong answer will take 6 seconds off the timer.
+        </p>
+        <p>
+            You can also play against your friends locally and compare your scores. Good luck!
+        </p>
+        <div class="start-buttons">
+            <button type="button" class="btn btn-secondary" id="startgame">Start the quiz!</button>
+            <button type="button" class="btn btn-secondary" id="view-leaderboard">View leaderboard</button>
+        </div>
+    </div>
+
+    <!-- Question layout -->
+    <div id="question">
+        <h5 id="question-counter" class="mt-2 mb-3">Question 1</h5>
+        <hr>
+        <h2 id="q">I am a question, please answer me yes?</h2>
+        <ul id="a">
+            <li><button id="a1" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="askQuestion(0)">I am an option</button></li>
+            <li><button id="a2" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="askQuestion(1)">I am another option</button></li>
+            <li><button id="a3" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="askQuestion(2)">I am the third option</button></li>
+            <li><button id="a4" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="askQuestion(3)">I am the last and final option</button></li>
+        </ul>
+        <hr>
+        <h6 id="feedback">Correct!</h6>
+    </div>
+
+    <!-- Highscore -->
+    <div id="highscore">
+        <h2 class="mt-2 mb-3">Congrats! You're all done.</h2>
+        <p>
+            You answered 6 questions right and 2 questions wrong. Your score is 6.
+        </p>
+        <p>
+            Please enter your initials below to compete against your friends locally.
+        </p>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Your Initials</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" id="submit-highscore" class="btn btn-secondary">Submit highscore</button>
+        </form>
+    </div>
+
+    <!-- Leaderboard -->
+    <div id="leaderboard">
+        <h2 class="mt-2 mb-3">Leaderboard</h2>
+        <table>
+            <tr>
+                <th>Player</th>
+                <th>Score</th>
+            </tr>
+            <tr>
+                <td>AB</td>
+                <td>60</td>
+            </tr>
+        </table>
+        <div class="mt-3">
+            <button type="submit" id="start-over" class="btn btn-secondary leaderboard">Start over</button>
+            <button type="submit" id="clear-leaderboard" class="btn btn-secondary leaderboard">Clear leaderboard</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
