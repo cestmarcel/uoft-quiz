@@ -22,7 +22,7 @@
     <div id="welcome-zone">
         <h1 class="mt-2 mb-3">Welcome to my Javascript Coding Quiz!</h1>
         <p>
-            Test your knowledge about Javascript. Try to answer as many questions as possible within 60 seconds. Each right answer will score you a point, while each wrong answer will take 6 seconds off the timer.
+            Test your knowledge about Javascript. Try to answer as many questions as possible within 60 seconds. Each right answer will score you a point, while each wrong answer will take 5 seconds off the timer.
         </p>
         <p>
             You can also play against your friends locally and compare your scores. Good luck!
@@ -35,14 +35,14 @@
 
     <!-- Question layout -->
     <div id="question">
-        <h5 id="question-counter" class="mt-2 mb-3">Question 1</h5>
+        <h5 id="question-counter" class="mt-2 mb-3"></h5>
         <hr>
         <h2 id="q">I am a question, please answer me yes?</h2>
         <ul id="a">
-            <li><button id="a1" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="askQuestion(0)">I am an option</button></li>
-            <li><button id="a2" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="askQuestion(1)">I am another option</button></li>
-            <li><button id="a3" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="askQuestion(2)">I am the third option</button></li>
-            <li><button id="a4" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="askQuestion(3)">I am the last and final option</button></li>
+            <li><button id="a1" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="validateChoice(0)">I am an option</button></li>
+            <li><button id="a2" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="validateChoice(1)">I am another option</button></li>
+            <li><button id="a3" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="validateChoice(2)">I am the third option</button></li>
+            <li><button id="a4" type="button" class="btn btn-light pt-0 pb-0 mb-2" onclick="validateChoice(3)">I am the last and final option</button></li>
         </ul>
         <hr>
         <h6 id="feedback">Correct!</h6>

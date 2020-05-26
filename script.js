@@ -122,16 +122,16 @@ var gameTimer = setInterval(function(){
 var i = 0;
 var score = 0;
 
-function askFirstQuestion(){
+function askQuestion(){
     document.getElementById("q").textContent = questions[i].q;
     document.getElementById("a1").textContent = questions[i].a[0];
     document.getElementById("a2").textContent = questions[i].a[1];
     document.getElementById("a3").textContent = questions[i].a[2];
     document.getElementById("a4").textContent = questions[i].a[3];
     document.getElementById("question-counter").textContent = `Question ${i+1}`;
-    }
+}
 
-function askQuestion(number){
+function validateChoice(number){
     var choice = number;
     if(choice == questions[i].v){
         document.getElementById("feedback").style = "display: block";
@@ -152,7 +152,7 @@ function startGame(){
     document.getElementById("timer").style = "display: block";
     document.getElementById("header-placeholder").style = "display: none";
     startTimer();
-    askFirstQuestion();
+    askQuestion();
 }
 
 document.getElementById("startgame").addEventListener("click", startGame);
