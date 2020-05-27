@@ -170,8 +170,9 @@ if(localStorage.getItem("leaderboard") != null){
 }
 
 // Check if user's choice is right or wrong
-function validateChoice(number){
+function validateChoice(number, event){
     var choice = number;
+    event.target.blur();
     document.getElementById("feedback").style = "display: block";
     stopFeedback();
     if(choice == questions[i].v){
