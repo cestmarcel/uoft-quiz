@@ -42,6 +42,12 @@ body {
     color: white;
 }
 
+.btn-secondary:focus {
+    background-color: #FF784F;
+    border-color: #FF784F;
+    color: #2C4251;
+}
+
 .start-buttons {
     display: inline-block;
     margin: 0 auto;
@@ -110,12 +116,6 @@ th {
 .leaderboard.btn-secondary {
     margin: 0;
     display: inline-block;
-}
-
-.leaderboard.btn-secondary:focus {
-    background-color: #FF784F;
-    border-color: #FF784F;
-    color: #2C4251;
 }
 
 /* Media queries */

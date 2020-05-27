@@ -247,6 +247,7 @@ function addToLeaderboard(event){
         players.push({"name": initials, "points": score});
         localStorage.setItem("players", JSON.stringify(players));
         resetTable();
+        document.getElementById("initials").value = "";
         // Loop through array of players and display them in each row of the table
         for(i=0; i<players.length; i++){
             leaderboard = document.getElementById("table").innerHTML +=
