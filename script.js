@@ -160,6 +160,15 @@ function askQuestion(){
     document.getElementById("question-counter").textContent = `Question ${i+1}`;
 }
 
+// Provide leaderboard HTML to be available after refresh
+
+if(localStorage.getItem("leaderboard") != null){
+    var retrievedLeaderboard = localStorage.getItem("leaderboard");
+    var leaderboard = JSON.parse(retrievedLeaderboard);
+} else {
+    var leaderboard;
+}
+
 // Check if user's choice is right or wrong
 function validateChoice(number){
     var choice = number;
@@ -240,12 +249,14 @@ function addToLeaderboard(event){
         resetTable();
         // Loop through array of players and display them in each row of the table
         for(i=0; i<players.length; i++){
-            document.getElementById("table").innerHTML +=
+            leaderboard = document.getElementById("table").innerHTML +=
             `<tr>
                 <td>${players[i].name}</td>
                 <td>${players[i].points}</td>
             </tr>`;
         }
+        // Save innerHTML to localStorage to make leaderboard accessible even after refresh
+        localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
     } else {
         document.getElementById("error").textContent = "Please make sure to enter your initials!";
     }
@@ -254,6 +265,18 @@ function addToLeaderboard(event){
 // Clear leaderboard
 function clearLeaderboard(){
     players = [];
+    leaderboard = "";
     localStorage.removeItem("players");
+    localStorage.removeItem("leaderboard");
     resetTable();
+}
+
+// Show leaderboard after refresh
+function showLeaderboardRefresh(){
+    viewLeaderboard();
+    if(leaderboard){
+        document.getElementById("table").innerHTML = leaderboard;
+    } else {
+        resetTable();
+    }
 }
