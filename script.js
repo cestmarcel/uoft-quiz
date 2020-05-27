@@ -201,6 +201,7 @@ function startGame(){
     document.getElementById("question").style = "display: block;";
     document.getElementById("timer").style = "display: block";
     document.getElementById("header-placeholder").style = "display: none";
+    document.getElementById("error").textContent = "";
     startTimer();
     askQuestion();
 }
