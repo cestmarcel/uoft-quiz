@@ -112,6 +112,12 @@ th {
     display: inline-block;
 }
 
+.leaderboard.btn-secondary:focus {
+    background-color: #FF784F;
+    border-color: #FF784F;
+    color: #2C4251;
+}
+
 /* Media queries */
 
 @media only screen and (max-width: 650px){

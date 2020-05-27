@@ -110,8 +110,8 @@ function endGame(){
     document.getElementById("score-notification").textContent = `You answered ${score} questions right, so your score is ${score}!`;
 }
 
-// Set up the timer
-var timer = 60
+// Set up the timer and timeout
+var timer = 60;
 
 function startTimer(){
 var gameTimer = setInterval(function(){
@@ -123,6 +123,21 @@ var gameTimer = setInterval(function(){
     }
     document.getElementById("timer").textContent = `Time left: ${timer}s`;
     }, 1000);
+}
+
+// Set up timeout
+var timeout;
+
+function showCorrect(){
+    timeout = setTimeout(function() { document.getElementById("feedback").textContent = ""; }, 2000);
+}
+
+function showWrong(){
+    timeout = setTimeout(function() { document.getElementById("feedback").textContent = ""; }, 2000);
+}
+
+function stopFeedback(){
+    clearTimeout(timeout);
 }
 
 // Set up question loop
@@ -149,11 +164,14 @@ function askQuestion(){
 function validateChoice(number){
     var choice = number;
     document.getElementById("feedback").style = "display: block";
+    stopFeedback();
     if(choice == questions[i].v){
         document.getElementById("feedback").textContent = "Correct!";
+        showCorrect();
         score++;
     } else {
         document.getElementById("feedback").textContent = "Wrong!";
+        showWrong();
         timer = timer-5;
     }
 
@@ -169,6 +187,7 @@ function validateChoice(number){
 
 // Start the game
 function startGame(){
+    i = 0;
     document.getElementById("welcome-zone").style = "display: none;";
     document.getElementById("question").style = "display: block;";
     document.getElementById("timer").style = "display: block";
@@ -201,6 +220,15 @@ function viewLeaderboard(){
     document.getElementById("leaderboard").style = "display: block";
 }
 
+// Reset table
+function resetTable(){
+    document.getElementById("table").innerHTML =
+    `<tr>
+        <th>Player</th>
+        <th>Score</th>
+    </tr>`;
+}
+
 // Add to leaderboard
 function addToLeaderboard(event){
     var initials = document.getElementById("initials").value;
@@ -209,6 +237,7 @@ function addToLeaderboard(event){
         viewLeaderboard();
         players.push({"name": initials, "points": score});
         localStorage.setItem("players", JSON.stringify(players));
+        resetTable();
         // Loop through array of players and display them in each row of the table
         for(i=0; i<players.length; i++){
             document.getElementById("table").innerHTML +=
@@ -226,9 +255,5 @@ function addToLeaderboard(event){
 function clearLeaderboard(){
     players = [];
     localStorage.removeItem("players");
-    document.getElementById("table").innerHTML =
-    `<tr>
-        <th>Player</th>
-        <th>Score</th>
-    </tr>`;
+    resetTable();
 }
