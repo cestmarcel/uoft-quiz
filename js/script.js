@@ -102,14 +102,6 @@ var questions = [
     }
 ]
 
-// Set up routine for ending the game
-function endGame(){
-    document.getElementById("question").style = "display: none;";
-    document.getElementById("timer").style = "display: none;";
-    document.getElementById("highscore").style = "display: block;";
-    document.getElementById("score-notification").textContent = `You answered ${score} questions right, so your score is ${score}!`;
-}
-
 // Set up the timer and timeout
 var timer = 60;
 
@@ -160,15 +152,6 @@ function askQuestion(){
     document.getElementById("question-counter").textContent = `Question ${i+1}`;
 }
 
-// Provide leaderboard HTML to be available after refresh
-
-if(localStorage.getItem("leaderboard") != null){
-    var retrievedLeaderboard = localStorage.getItem("leaderboard");
-    var leaderboard = JSON.parse(retrievedLeaderboard);
-} else {
-    var leaderboard;
-}
-
 // Check if user's choice is right or wrong
 function validateChoice(number, event){
     var choice = number;
@@ -209,6 +192,14 @@ function startGame(){
 
 document.getElementById("startgame").addEventListener("click", startGame);
 
+// Set up routine for ending the game
+function endGame(){
+    document.getElementById("question").style = "display: none;";
+    document.getElementById("timer").style = "display: none;";
+    document.getElementById("highscore").style = "display: block;";
+    document.getElementById("score-notification").textContent = `You answered ${score} questions right, so your score is ${score}!`;
+}
+
 // Back to homepage (start) setup
 function goToStart(){
     document.getElementById("welcome-zone").style = "display: block;";
@@ -229,6 +220,15 @@ function viewLeaderboard(){
     document.getElementById("header-placeholder").style = "display: block";
     document.getElementById("highscore").style = "display: none";
     document.getElementById("leaderboard").style = "display: block";
+}
+
+// Provide leaderboard HTML to be available after refresh
+
+if(localStorage.getItem("leaderboard") != null){
+    var retrievedLeaderboard = localStorage.getItem("leaderboard");
+    var leaderboard = JSON.parse(retrievedLeaderboard);
+} else {
+    var leaderboard;
 }
 
 // Reset table
